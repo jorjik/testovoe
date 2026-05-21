@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import StickyBar from './StickyBar';
 import Header from './Header';
-import Footer from './Footer';
+import Footer from '../sections/Footer';
 import RegisterFlow from '../registration/RegisterFlow';
 import { useTheme } from '../ThemeProvider';
 import { themesContent } from '../../config/content';
