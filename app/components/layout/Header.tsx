@@ -10,9 +10,10 @@ interface HeaderProps {
     };
     themeId: string;
     onSignupClick?: () => void;
+    onLoginClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ content, themeId, onSignupClick }) => {
+const Header: React.FC<HeaderProps> = ({ content, themeId, onSignupClick, onLoginClick }) => {
     return (
         <header className={styles.header}>
             <div className={`${styles.container} container`}>
@@ -24,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ content, themeId, onSignupClick }) => {
                     )}
                 </div>
                 <div className={styles.actions}>
-                    <button className={styles.loginBtn} onClick={onSignupClick}>{content.login}</button>
+                    <button className={styles.loginBtn} onClick={onLoginClick}>{content.login}</button>
                     <button
                         className={`${styles.signupBtn} btn-primary`}
                         onClick={onSignupClick}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './RegisterFlow.module.css';
 import ProgressIndicator from './ProgressIndicator';
 import PromoCard from './PromoCard';
@@ -12,9 +12,11 @@ import { RegistrationData, RegistrationStep } from '../../types/registration';
 
 interface RegisterFlowProps {
     onClose: () => void;
+    initialMode?: 'login' | 'signup';
 }
 
-const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose }) => {
+const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose, initialMode = 'signup' }) => {
+    const [mode, setMode] = useState<'login' | 'signup'>(initialMode);
     const [step, setStep] = useState<RegistrationStep>(1);
     const [formData, setFormData] = useState<RegistrationData>({
         email: '',
@@ -29,6 +31,11 @@ const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose }) => {
         phone: '',
     });
 
+    // Reset steps if switching back to signup
+    useEffect(() => {
+        if (mode === 'signup') setStep(1);
+    }, [mode]);
+
     const nextStep = async (data: Partial<RegistrationData>) => {
         const updatedData = { ...formData, ...data };
         setFormData(updatedData);
@@ -36,7 +43,6 @@ const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose }) => {
         if (step === 1) setStep(2);
         else if (step === 2) setStep(3);
         else if (step === 3) {
-            // Final submission
             setStep('success');
             try {
                 await fetch('/api/register', {
@@ -61,18 +67,49 @@ const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose }) => {
                 {step !== 'success' && (
                     <>
                         <button className={styles.closeBtn} onClick={onClose}>×</button>
-                        <h2 className={styles.title}>Sign Up</h2>
-                        <PromoCard />
-                        <ProgressIndicator currentStep={step} />
+                        <h2 className={styles.title}>{mode === 'signup' ? 'Create Account' : 'Welcome Back'}</h2>
+
+                        {mode === 'signup' ? (
+                            <>
+                                <PromoCard />
+                                <ProgressIndicator currentStep={step} />
+                            </>
+                        ) : (
+                            <div className={styles.loginContent}>
+                                <p className={styles.loginSubtitle}>Sign in to your account to continue playing</p>
+                                {/* Simplified login mock for LP demo */}
+                                <div className={styles.mockLogin}>
+                                    <input type="text" placeholder="Email or Username" className={styles.input} />
+                                    <input type="password" placeholder="Password" className={styles.input} />
+                                    <button className="btn-primary" style={{ width: '100%', marginTop: '10px' }} onClick={onClose}>
+                                        LOG IN
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </>
                 )}
 
                 <div className={styles.content}>
-                    {step === 1 && <Step1 onNext={nextStep} initialData={formData} />}
-                    {step === 2 && <Step2 onNext={nextStep} onBack={prevStep} initialData={formData} />}
-                    {step === 3 && <Step3 onNext={nextStep} onBack={prevStep} initialData={formData} />}
-                    {step === 'success' && <OfferScreen onContinue={onClose} />}
+                    {mode === 'signup' && (
+                        <>
+                            {step === 1 && <Step1 onNext={nextStep} initialData={formData} />}
+                            {step === 2 && <Step2 onNext={nextStep} onBack={prevStep} initialData={formData} />}
+                            {step === 3 && <Step3 onNext={nextStep} onBack={prevStep} initialData={formData} />}
+                            {step === 'success' && <OfferScreen onContinue={onClose} />}
+                        </>
+                    )}
                 </div>
+
+                {step !== 'success' && (
+                    <div className={styles.switchMode}>
+                        {mode === 'signup' ? (
+                            <p>Already have an account? <button onClick={() => setMode('login')}>Log In</button></p>
+                        ) : (
+                            <p>Don't have an account? <button onClick={() => setMode('signup')}>Sign Up</button></p>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
