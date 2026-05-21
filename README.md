@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Social Casino Landing Page
 
-## Getting Started
+Это проект лендинга для социального казино, созданный на [Next.js](https://nextjs.org) и оптимизированный для высокой производительности и быстрой визуальной адаптации.
 
-First, run the development server:
+## 🚀 Основные возможности
+
+- **Модульная система тем**: Поддержка двух уникальных стилей оформления (v1 и v2) через URL-параметры.
+- **Многошаговая регистрация**: Полноценная 3-этапная форма с валидацией данных.
+- **Интеграция с Google Sheets**: Автоматический трекинг лидов в реальном времени.
+- **Высокая производительность**: Оптимизация под Google PageSpeed Metrics (90+).
+- **Адаптивный дизайн**: Полная поддержка мобильных устройств.
+
+## 🛠 Начало работы
+
+Сначала запустите сервер разработки:
 
 ```bash
 npm run dev
-# or
+# или
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте [http://localhost:3000](http://localhost:3000) в браузере, чтобы увидеть результат.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Просмотр тем
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Проект поддерживает динамическую смену тем. Используйте параметры URL для переключения:
 
-## Learn More
+- **SpinQuest (V1)**: `http://localhost:3000/?theme=v1` (по умолчанию)
+- **Luck Is a Journey (V2)**: `http://localhost:3000/?theme=v2`
 
-To learn more about Next.js, take a look at the following resources:
+Или воспользуйтесь кнопкой **Theme Switcher** в правом нижнем углу сайта.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📊 Настройка интеграции (Google Sheets)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Для работы формы регистрации необходимо:
+1. Создать Google Таблицу.
+2. Подключить скрипт из `scripts/google-apps-script.js`.
+3. Развернуть его как Web App.
+4. Добавить полученный URL в файл `.env.local` как `GOOGLE_SCRIPT_URL`.
 
-## Deploy on Vercel
+## 📦 Сборка и деплой
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Для создания оптимизированной сборки:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+Самый простой способ развертывания — использовать [Vercel Platform](https://vercel.com/new).
+
+---
+Создано с помощью Antigravity Kit.
