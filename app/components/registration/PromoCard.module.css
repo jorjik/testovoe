@@ -1,0 +1,59 @@
+.card {
+    background: linear-gradient(90deg, #0012ff 0%, #00b8ff 100%);
+    border-radius: var(--radius-m);
+    padding: var(--space-m);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xl);
+    overflow: hidden;
+    position: relative;
+}
+
+.content {
+    z-index: 2;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: var(--space-s);
+}
+
+.reward {
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gold,
+.sweeps {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.gold {
+    background: #ffcc00;
+    color: #000;
+}
+
+.sweeps {
+    background: #00ff00;
+    color: #000;
+}
+
+.imagePlaceholder {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.2;
+    font-size: 80px;
+}

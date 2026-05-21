@@ -1,0 +1,156 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-l);
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    margin-bottom: var(--space-xl);
+}
+
+.badge {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 10px;
+    font-weight: 900;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    display: inline-block;
+    margin-bottom: var(--space-m);
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: var(--space-s);
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+.card {
+    background-color: var(--color-bg-alt);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-l);
+    padding: var(--space-xl);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(var(--color-primary-rgb, 255, 204, 0), 0.2);
+    margin-bottom: var(--space-xl);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff4d4d;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: var(--radius-s);
+}
+
+.offerInfo {
+    margin-bottom: var(--space-xl);
+}
+
+.value {
+    margin-bottom: var(--space-l);
+}
+
+.amount {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--color-text);
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.goldCount,
+.sweepsCount {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.goldLabel {
+    font-size: 10px;
+    color: #ffcc00;
+    font-weight: 700;
+}
+
+.sweepsLabel {
+    font-size: 10px;
+    color: #00ff00;
+    font-weight: 700;
+}
+
+.plus {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+}
+
+.cta {
+    width: 100%;
+    padding: var(--space-m);
+    font-size: 18px;
+}
+
+.paymentMethods {
+    margin-bottom: var(--space-xl);
+}
+
+.methodsGrid {
+    display: flex;
+    gap: var(--space-m);
+    margin-bottom: var(--space-s);
+    opacity: 0.5;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.securityText {
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+.skipBtn {
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.skipBtn:hover {
+    color: var(--color-text);
+}

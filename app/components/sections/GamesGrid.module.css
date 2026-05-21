@@ -1,0 +1,93 @@
+.section {
+    padding: var(--space-xxl) 0;
+    background-color: var(--color-bg-alt);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-xxl);
+}
+
+.headline {
+    font-size: 32px;
+    margin-bottom: var(--space-s);
+}
+
+.subheadline {
+    color: var(--color-text-muted);
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-m);
+    margin-bottom: var(--space-xxl);
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 180px;
+    background: var(--color-bg);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    transition: transform var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.activeCard {
+    width: 220px;
+    transform: scale(1.1);
+    z-index: 10;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 30px rgba(var(--color-primary-rgb, 255, 204, 0), 0.3);
+}
+
+.gameImage {
+    height: 200px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.img {
+    object-fit: cover;
+}
+
+.placeholderIcon {
+    font-size: 48px;
+}
+
+.gameInfo {
+    padding: var(--space-m);
+    text-align: center;
+}
+
+.category {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: 800;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.gameTitle {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ctaWrapper {
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .activeCard {
+        width: 180px;
+        transform: none;
+    }
+}

@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: var(--space-xl);
+}
+
+.step {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.active {
+    border-color: var(--color-secondary);
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    box-shadow: 0 0 10px rgba(var(--color-secondary-rgb, 0, 112, 243), 0.5);
+}
+
+.completed {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.line {
+    height: 2px;
+    width: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.activeLine {
+    background-color: var(--color-secondary);
+}

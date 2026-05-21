@@ -1,0 +1,39 @@
+[data-theme='v2'] {
+    --color-primary: #d4af37;
+    /* Brass Gold */
+    --color-secondary: #1a1a1a;
+    --color-bg: #0a0a0a;
+    --color-bg-alt: #141414;
+    --color-text: #f0ede6;
+    /* Parchment */
+    --color-text-muted: #a39e93;
+    --color-accent: #8b4513;
+
+    --color-primary-rgb: 212, 175, 55;
+    --color-secondary-rgb: 26, 26, 26;
+
+    --font-main: var(--font-inter), sans-serif;
+    --font-accent: var(--font-playfair), serif;
+
+    --hero-gradient: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, rgba(10, 10, 10, 1) 75%);
+
+    --button-radius: 2px;
+    --button-font-weight: 500;
+    --button-text-transform: uppercase;
+    --button-letter-spacing: 2px;
+
+    --glow-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* Theme-specific animation */
+@keyframes v2-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

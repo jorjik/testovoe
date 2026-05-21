@@ -1,0 +1,43 @@
+.bar {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    height: var(--promo-bar-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+}
+
+.cta {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: none;
+    padding: 4px 12px;
+    border-radius: var(--radius-s);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.cta:hover {
+    filter: brightness(1.1);
+}
+
+@media (max-width: 600px) {
+    .offer {
+        font-size: 12px;
+    }
+}

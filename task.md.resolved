@@ -1,0 +1,33 @@
+# Task List: Social Casino Landing Page
+
+- [/] Project Setup & Planning
+    - [/] Initialize Next.js project (Next.js, TypeScript, Vanilla CSS)
+    - [ ] Define design tokens and theme architecture (CSS Variables)
+    - [ ] Create content configuration system
+- [ ] Core UI Components
+    - [ ] Common Layout (Sticky Promo, Header, Footer)
+    - [ ] Hero Section
+    - [ ] Social Proof Section
+    - [ ] Games & Providers Section
+    - [ ] Value & FAQ Sections
+- [ ] Multi-Step Registration Flow
+    - [ ] Form step logic and progress indicator
+    - [ ] Step 1: Account details (Email, Password, Checkboxes)
+    - [ ] Step 2: Personal information (Name, DOB)
+    - [ ] Step 3: Contact details (Phone, Address, States dropdown)
+    - [ ] Validation and error handling
+    - [ ] Success screen & Purchase Offer component
+- [ ] Backend & Integration
+    - [ ] Setup Google Sheets API / Apps Script logic
+    - [ ] Form submission handling and persistence
+- [ ] Visual Adaptations
+    - [ ] Implement V1 Theme (SpinQuest style)
+    - [ ] Implement V2 Theme (Luck Is a Journey style)
+    - [ ] Verify style switching mechanism
+- [ ] Performance & Quality Assurance
+    - [ ] Image optimization (WebP, sizes)
+    - [ ] Critical CSS & Bundle size checks
+    - [ ] Verification on Lighthouse (Mobile)
+- [ ] Final Handover
+    - [ ] Generate README.md
+    - [ ] Cleanup and final checks

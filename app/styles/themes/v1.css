@@ -1,0 +1,37 @@
+[data-theme='v1'] {
+    --color-primary: #ffcc00;
+    --color-secondary: #0070f3;
+    --color-bg: #060b26;
+    --color-bg-alt: #0a1336;
+    --color-text: #ffffff;
+    --color-text-muted: #8892b0;
+    --color-accent: #30f0ff;
+
+    --color-primary-rgb: 255, 204, 0;
+    --color-secondary-rgb: 0, 112, 243;
+
+    --font-main: 'Inter', sans-serif;
+    --font-accent: 'Inter', sans-serif;
+
+    --hero-gradient: radial-gradient(circle at 50% 50%, rgba(0, 112, 243, 0.3) 0%, rgba(6, 11, 38, 1) 70%);
+
+    --button-radius: var(--radius-m);
+    --button-font-weight: 800;
+
+    --glow-shadow: 0 0 15px rgba(0, 112, 243, 0.4);
+}
+
+/* Theme-specific animation */
+@keyframes v1-float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

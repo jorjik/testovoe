@@ -1,0 +1,67 @@
+.header {
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    position: absolute;
+    top: var(--promo-bar-height);
+    left: 0;
+    right: 0;
+    z-index: 900;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.spinQuest {
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+.compass {
+    color: var(--color-primary);
+    font-family: var(--font-accent);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-m);
+}
+
+.loginBtn {
+    background: transparent;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 14px;
+    padding: var(--space-s) var(--space-m);
+}
+
+.loginBtn:hover {
+    opacity: 0.8;
+}
+
+.signupBtn {
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    .actions {
+        gap: var(--space-s);
+    }
+}
