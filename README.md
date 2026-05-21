@@ -49,5 +49,4 @@ npm run build
 
 Самый простой способ развертывания — использовать [Vercel Platform](https://vercel.com/new).
 
----
-Создано с помощью Antigravity Kit.
+
