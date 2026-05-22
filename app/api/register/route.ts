@@ -8,11 +8,11 @@ export async function POST(request: Request) {
         const SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL;
 
         if (!SCRIPT_URL) {
-            console.warn('GOOGLE_SCRIPT_URL is not defined in environment variables');
+            console.error('GOOGLE_SCRIPT_URL is not defined in environment variables');
             return NextResponse.json({
-                success: true,
-                message: 'Data processed locally, but Google Script URL is missing.'
-            });
+                success: false,
+                error: 'Configuration error: GOOGLE_SCRIPT_URL is not defined. Please add it to your environment variables.'
+            }, { status: 500 });
         }
 
         console.log('Sending data to Google Script...');
@@ -23,15 +23,18 @@ export async function POST(request: Request) {
             redirect: 'follow'
         });
 
-        const responseText = await response.text();
+        const responseData = await response.json();
         console.log('Google Script response status:', response.status);
-        console.log('Google Script response text:', responseText);
+        console.log('Google Script response data:', responseData);
 
-        if (!response.ok) {
-            throw new Error(`Google Script returned ${response.status}: ${responseText}`);
+        if (!response.ok || responseData.result !== 'success') {
+            return NextResponse.json({
+                success: false,
+                error: responseData.error || `Google Script error (Status ${response.status})`
+            }, { status: 500 });
         }
 
-        return NextResponse.json({ success: true });
+        return NextResponse.json({ success: true, debug: responseData });
     } catch (err) {
         console.error('Registration error details:', err);
         return NextResponse.json({
@@ -40,4 +43,3 @@ export async function POST(request: Request) {
         }, { status: 500 });
     }
 }
-

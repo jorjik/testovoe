@@ -10,6 +10,7 @@ interface OfferScreenProps {
 const OfferScreen: React.FC<OfferScreenProps> = ({ onContinue }) => {
     return (
         <div className={styles.container}>
+            <button className={styles.closeBtn} onClick={onContinue} aria-label="Close">×</button>
             <div className={styles.header}>
                 <h2 className={styles.badge}>EXCLUSIVE FOR NEW PLAYERS</h2>
                 <h1 className={styles.title}>Your First Purchase Bonus</h1>

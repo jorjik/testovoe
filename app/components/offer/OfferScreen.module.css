@@ -154,3 +154,20 @@
 .skipBtn:hover {
     color: var(--color-text);
 }
+
+.closeBtn {
+    position: absolute;
+    top: var(--space-m);
+    right: var(--space-m);
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.closeBtn:hover {
+    color: var(--color-text);
+}

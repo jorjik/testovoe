@@ -22,20 +22,26 @@ function doPost(e) {
         }
 
         const timestamp = new Date();
-        const dobString = `${data.dob.month}/${data.dob.day}/${data.dob.year}`;
+        const dob = data.dob || {};
+        const dobString = dob.month ? `${dob.month}/${dob.day}/${dob.year}` : 'N/A';
 
-        sheet.appendRow([
+        console.log('Processing registration for:', data.email);
+
+        const rowData = [
             timestamp,
-            data.email,
-            data.firstName,
-            data.lastName,
+            data.email || 'N/A',
+            data.firstName || 'N/A',
+            data.lastName || 'N/A',
             dobString,
-            data.city,
-            data.state,
-            data.postalCode,
-            data.address,
-            data.phone
-        ]);
+            data.city || 'N/A',
+            data.state || 'N/A',
+            data.postalCode || 'N/A',
+            data.address || 'N/A',
+            data.phone || 'N/A'
+        ];
+
+        sheet.appendRow(rowData);
+
 
         return ContentService.createTextOutput(JSON.stringify({ "result": "success" }))
             .setMimeType(ContentService.MimeType.JSON);
