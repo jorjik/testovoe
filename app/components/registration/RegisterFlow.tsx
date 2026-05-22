@@ -18,6 +18,7 @@ interface RegisterFlowProps {
 const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose, initialMode = 'signup' }) => {
     const [mode, setMode] = useState<'login' | 'signup'>(initialMode);
     const [step, setStep] = useState<RegistrationStep>(1);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState<RegistrationData>({
         email: '',
         password: '',
@@ -33,7 +34,10 @@ const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose, initialMode = 'sig
 
     // Reset steps if switching back to signup
     useEffect(() => {
-        if (mode === 'signup') setStep(1);
+        if (mode === 'signup') {
+            setStep(1);
+            setIsSubmitting(false);
+        }
     }, [mode]);
 
     const nextStep = async (data: Partial<RegistrationData>) => {
@@ -43,18 +47,34 @@ const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose, initialMode = 'sig
         if (step === 1) setStep(2);
         else if (step === 2) setStep(3);
         else if (step === 3) {
-            setStep('success');
+            console.log('Starting registration submission...');
+            setIsSubmitting(true);
+
             try {
-                await fetch('/api/register', {
+                console.log('Sending data to /api/register:', updatedData);
+                const response = await fetch('/api/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(updatedData),
                 });
+
+                const result = await response.json();
+                console.log('API Response:', result);
+
+                if (!response.ok || !result.success) {
+                    console.error('Submission failed:', result.error || 'Unknown error');
+                } else {
+                    console.log('Successfully registered and tracked!');
+                }
             } catch (err) {
-                console.error('Submission failed', err);
+                console.error('Critical submission error:', err);
+            } finally {
+                setIsSubmitting(false);
+                setStep('success'); // Always show success to user on LP
             }
         }
     };
+
 
     const prevStep = () => {
         if (step === 2) setStep(1);
@@ -95,7 +115,7 @@ const RegisterFlow: React.FC<RegisterFlowProps> = ({ onClose, initialMode = 'sig
                         <>
                             {step === 1 && <Step1 onNext={nextStep} initialData={formData} />}
                             {step === 2 && <Step2 onNext={nextStep} onBack={prevStep} initialData={formData} />}
-                            {step === 3 && <Step3 onNext={nextStep} onBack={prevStep} initialData={formData} />}
+                            {step === 3 && <Step3 onNext={nextStep} onBack={prevStep} initialData={formData} isSubmitting={isSubmitting} />}
                             {step === 'success' && <OfferScreen onContinue={onClose} />}
                         </>
                     )}

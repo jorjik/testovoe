@@ -8,6 +8,7 @@ interface Step3Props {
     onNext: (data: Partial<RegistrationData>) => void;
     onBack: () => void;
     initialData: RegistrationData;
+    isSubmitting?: boolean;
 }
 
 const US_STATES = [
@@ -21,7 +22,7 @@ const US_STATES = [
     'Wisconsin', 'Wyoming'
 ];
 
-const Step3: React.FC<Step3Props> = ({ onNext, onBack, initialData }) => {
+const Step3: React.FC<Step3Props> = ({ onNext, onBack, initialData, isSubmitting }) => {
     const [city, setCity] = useState(initialData.city);
     const [postalCode, setPostalCode] = useState(initialData.postalCode);
     const [state, setState] = useState(initialData.state);
@@ -31,6 +32,7 @@ const Step3: React.FC<Step3Props> = ({ onNext, onBack, initialData }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        if (isSubmitting) return;
         if (!city || !postalCode || !state || !address || !phone) return setError('Please fill all fields.');
 
         onNext({ city, postalCode, state, address, phone });
@@ -101,11 +103,11 @@ const Step3: React.FC<Step3Props> = ({ onNext, onBack, initialData }) => {
             </div>
 
             <div className={styles.actions}>
-                <button type="button" className={styles.backBtn} onClick={onBack}>
+                <button type="button" className={styles.backBtn} onClick={onBack} disabled={isSubmitting}>
                     ←
                 </button>
-                <button type="submit" className={`${styles.submitBtn} btn-primary`}>
-                    CLAIM REWARD
+                <button type="submit" className={`${styles.submitBtn} btn-primary`} disabled={isSubmitting}>
+                    {isSubmitting ? 'PROCESSING...' : 'CLAIM REWARD'}
                 </button>
             </div>
         </form>
